@@ -86,14 +86,15 @@
             const messageAreas = document.querySelectorAll('[role="main"], .message-container, .chat-message');
             for (const area of messageAreas) {
                 simulateHover(area);
-                // Wait a bit for hover effects
-                setTimeout(() => {
-                    rerunButton = findRerunButton();
-                    if (rerunButton) {
-                        performClick(rerunButton);
-                    }
-                }, 100);
             }
+            
+            // Wait for hover effects and try to find button again
+            setTimeout(() => {
+                const foundButton = findRerunButton();
+                if (foundButton) {
+                    performClick(foundButton);
+                }
+            }, 100);
         } else {
             performClick(rerunButton);
         }
